@@ -1,6 +1,7 @@
-import Abstractroute from './Abstractroute';
+import Abstractroute from './AbstractRoute';
 import { action } from '@ember/object';
 import RSVP from 'rsvp';
+
 export default class BoardRoute extends Abstractroute {
   model() {
     let user = this.userAuth.user;
@@ -14,6 +15,7 @@ export default class BoardRoute extends Abstractroute {
       });
     }
   }
+
   @action logout() {
     this.userAuth.logout();
     this.refresh();

@@ -1,22 +1,12 @@
-import JSONSerializer from '@ember-data/serializer/json';
-import { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
-export default class OrderdetailSerializer extends JSONSerializer.extend(
-  EmbeddedRecordsMixin
-) {
-  attrs = {
-    product: { embedded: 'always' },
-  };
-  compositeKeys = ['order', 'product'];
+export default class OrderdetailModel extends Model {
+  @attr('number') quantity;
+  @attr('boolean') prepared;
+  @belongsTo('product') product;
+  @belongsTo('order') order;
 
-  extractId(modelClass, resourceHash) {
-    return this.compositeKeys
-      .map((key) => {
-        if (resourceHash[key].id) {
-          return resourceHash[key].id;
-        }
-        return resourceHash[key];
-      })
-      .join(',');
+  get amount() {
+    return this.product.get('price') * this.quantity;
   }
 }

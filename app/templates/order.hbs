@@ -1,0 +1,33 @@
+{{page-title "Order"}}
+<div class="ui green segment">
+    <span class="ui label">{{@model.employee.name}} ({{@model.employee.email}})</span>
+    <button class="ui black button" type="button" {{action "logout"}}>Logout</button>
+</div>
+
+{{@model.order.dateCreation}}
+
+<h2>Listes produits</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Nom</td>
+      <td>Quantité</td>
+      <td>Prix</td>
+      <td>Montant</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each @model.orderdetails as |order|}}
+      <tr>
+        <td>{{order.product.name}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.product.price}}€</td>
+        <td>{{order.amount}}€</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+{{outlet}}
