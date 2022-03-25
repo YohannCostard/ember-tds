@@ -9,7 +9,11 @@
   {{#each @model.orders as |order|}}
     <li>
       <LinkTo @route="order" @model={{order.id}}>
-        {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+        {{#if this.prepared}}
+          <i class="check icon"></i> {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>{{order.toPay}}€
+        {{else}}
+          <i class="hourglass outline icon"></i> {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+        {{/if}}
       </LinkTo>
     </li>
   {{/each}}

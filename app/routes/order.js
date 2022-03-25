@@ -10,4 +10,6 @@ export default class OrderRoute extends Route {
       include: 'orderdetails.product,user,',
     });
   }
+
+
 }
