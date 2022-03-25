@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import {service} from '@ember/service';
+import { service } from '@ember/service';
 
 export default class OrderRoute extends Route {
 
@@ -7,7 +7,7 @@ export default class OrderRoute extends Route {
 
   model(params) {
     return this.store.findRecord('order', params.order_id, {
-      include: 'orderdetails.product,user,order',
+      include: 'orderdetails.product,user,',
     });
   }
 }

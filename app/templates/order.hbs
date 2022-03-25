@@ -1,10 +1,10 @@
 {{page-title "Order"}}
 <div class="ui green segment">
-    <span class="ui label">{{@model.employee.name}} ({{@model.employee.email}})</span>
+    <span class="ui label">{{@model.user.name}} ({{@model.user.email}})</span>
     <button class="ui black button" type="button" {{action "logout"}}>Logout</button>
 </div>
 
-{{@model.order.dateCreation}}
+{{@model.dateCreation}}
 
 <h2>Listes produits</h2>
 <table>
@@ -14,6 +14,7 @@
       <td>Quantité</td>
       <td>Prix</td>
       <td>Montant</td>
+      <td>Préparation</td>
     </tr>
   </thead>
 
@@ -24,6 +25,7 @@
         <td>{{order.quantity}}</td>
         <td>{{order.product.price}}€</td>
         <td>{{order.amount}}€</td>
+
       </tr>
     {{/each}}
   </tbody>
